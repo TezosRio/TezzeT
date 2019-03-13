@@ -7,12 +7,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.inputmethod.EditorInfo;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -26,9 +26,6 @@ import android.widget.Toast;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
-import java.util.Timer;
-import java.util.TimerTask;
-
 
 import milfont.com.tezosj_android.domain.Crypto;
 import milfont.com.tezosj_android.helper.SharedPreferencesHelper;
@@ -46,7 +43,6 @@ public class WalletActivity extends AppCompatActivity
     private TextView textViewAddress = null;
     private EditText editTextAlias = null;
     private String myBalance = "0 " + TEZOS_SYMBOL;
-    private Timer timer = new Timer();
     private final long DELAY = 3000;
     private Button buttonSend = null;
     private Button buttonReceive = null;
@@ -153,6 +149,7 @@ public class WalletActivity extends AppCompatActivity
 
             try
             {
+
                 // Loads a wallet from media.
                 myWallet = new TezosWallet(ctx, editTextUnlockPhrase.getText().toString());
 
@@ -163,52 +160,26 @@ public class WalletActivity extends AppCompatActivity
                     textViewAddress.setText(myWallet.getPublicKeyHash());
 
                     // Adds listener to alias field.
-                    editTextAlias.addTextChangedListener(new TextWatcher()
+                    editTextAlias.setOnEditorActionListener(new EditText.OnEditorActionListener()
                     {
                         @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count)
+                        public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
                         {
-                        }
+                            if (actionId == EditorInfo.IME_ACTION_DONE)
+                            {
+                                // Sets current wallet new alias.
+                                myWallet.setAlias(editTextAlias.getText().toString());
 
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count, int after)
-                        {
-                        }
+                                // Saves current wallet after some seconds.
+                                myWallet.save(ctx);
 
-                        @Override
-                        public void afterTextChanged(Editable s)
-                        {
-                            // Sets current wallet new alias.
-                            myWallet.setAlias(editTextAlias.getText().toString());
+                                //Hide cursor and keyboard.
+                                editTextAlias.clearFocus();
+                                hideKeyboard();
 
-                            timer.cancel();
-                            timer = new Timer();
-                            timer.schedule(
-                                    new TimerTask()
-                                    {
-                                        @Override
-                                        public void run()
-                                        {
-                                            runOnUiThread(new Runnable()
-                                            {
-
-                                                @Override
-                                                public void run()
-                                                {
-
-                                                    // Saves current wallet after some seconds.
-                                                    myWallet.save(ctx);
-
-                                                    //Hide cursor and keyboard.
-                                                    hideKeyboard();
-                                                    editTextAlias.clearFocus();
-
-                                                }
-                                            });
-                                        }
-                                    },
-                                    DELAY
-                            );
+                                return true;
+                            }
+                            return false;
                         }
                     });
 
@@ -445,7 +416,7 @@ public class WalletActivity extends AppCompatActivity
                                                             // Otherwise, the result JSON will have the operation hash.
                                                             if (status.contains("error") == true)
                                                             {
-                                                               status = "Sorry, funds could not be sent. There were errors. Operation was cancelled";
+                                                                status = "Sorry, funds could not be sent. There were errors. Operation was cancelled";
                                                             }
                                                             else
                                                             {

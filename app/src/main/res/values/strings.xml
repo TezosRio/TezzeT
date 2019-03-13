@@ -22,4 +22,5 @@
     <string name="passphrase">Passphrase</string>
     <string name="type_the_passphrase">Type the passphrase</string>
     <string name="import_wallet">Import wallet</string>
+    <string name="done">Done</string>
 </resources>
