@@ -130,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:background="@color/ligth_grey_tezosrio"
+                android:background="@color/lite_grey_tezosrio"
                 android:fontFamily="sans-serif-light"
                 android:text="@string/cancel"
                 android:textColor="@color/dark_grey_tezosrio"

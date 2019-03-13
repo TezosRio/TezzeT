@@ -10,6 +10,6 @@
     <color name="green">#006600</color>
     <color name="white">#ffffff</color>
     <color name="golden_tezosrio">#C8B08B</color>
-    <color name="ligth_grey_tezosrio">#EDEDED</color>
+    <color name="lite_grey_tezosrio">#EDEDED</color>
     <color name="dark_grey_tezosrio">#6A6A6A</color>
 </resources>

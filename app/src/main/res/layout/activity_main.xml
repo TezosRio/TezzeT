@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ligth_grey_tezosrio"
+    android:background="@color/lite_grey_tezosrio"
     android:orientation="vertical">
 
 
@@ -35,7 +35,7 @@
             android:paddingHorizontal="40dp"
             android:paddingVertical="18dp"
             android:text="Create wallet"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btn_import_wallet"
@@ -43,7 +43,6 @@
             android:layout_height="0sp"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:backgroundTint=""
             android:background="@color/golden_tezosrio"
             android:elevation="10dp"
             android:fontFamily="sans-serif-light"

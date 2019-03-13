@@ -1,9 +1,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:background="@color/ligth_grey_tezosrio"
-            android:padding="20sp">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/lite_grey_tezosrio"
+    android:orientation="vertical"
+    android:padding="20sp">
 
 
     <LinearLayout
@@ -22,17 +22,17 @@
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="100dp"
-                android:src="@drawable/tezzet_logo"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/tezzet_logo" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="30sp"
-                android:textSize="15sp"
                 android:layout_marginBottom="5sp"
+                android:paddingBottom="30sp"
                 android:text="@string/warning_write_down"
-                android:textStyle="bold"/>
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -46,28 +46,28 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="@string/wallet_passphrase"/>
+                android:text="@string/wallet_passphrase"
+                android:textSize="15sp" />
 
             <EditText
                 android:id="@+id/editText_passphrase"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/type_a_passphrase"
-                android:paddingBottom="10sp"
-                android:padding="15sp"
                 android:background="@drawable/edittext_shadow"
-                android:paddingTop="10sp"/>
+                android:hint="@string/type_a_passphrase"
+                android:padding="15sp"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp" />
 
             <Button
                 android:id="@+id/btn_create_new_wallet"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/golden_tezosrio"
                 android:text="@string/create_new_wallet"
                 android:textColor="@color/white"
-                android:layout_marginLeft="100dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -83,27 +83,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:labelFor="@+id/editText_mnemonic"
-                android:text="@string/mnemonic_words"/>
+                android:text="@string/mnemonic_words" />
 
             <EditText
                 android:id="@+id/editText_mnemonic"
                 android:layout_width="match_parent"
                 android:layout_height="150sp"
-                android:enabled="false"
-                android:background="@drawable/edittext_shadow"
-                android:textSize="15sp"
                 android:layout_marginBottom="5sp"
-                android:inputType="textMultiLine|textCapWords"/>
+                android:background="@drawable/edittext_shadow"
+                android:enabled="false"
+                android:inputType="textMultiLine|textCapWords"
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/btn_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:background="@color/golden_tezosrio"
                 android:text="@string/next"
                 android:textColor="@color/white"
-                android:layout_marginTop="20dp"
                 android:textStyle="bold" />
 
 
