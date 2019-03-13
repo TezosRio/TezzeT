@@ -1,3 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="pdText">10dp</dimen>
+    <dimen name="mgTitle">5sp </dimen>
 </resources>

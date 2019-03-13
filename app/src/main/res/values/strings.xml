@@ -2,7 +2,7 @@
     <string name="app_name">TezzeT</string>
     <string name="title_activity_main">TezzeT</string>
     <string name="receive_funds">Receive funds</string>
-    <string name="send_funds">Send funds</string>
+    <string name="send_funds">SEND FUNDS</string>
     <string name="qrcode_of_your_address">QR Code image of your address</string>
     <string name="ok">OK</string>
     <string name="to_address">To address</string>

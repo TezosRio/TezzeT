@@ -1,36 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="50sp"
-            android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ligth_grey_tezosrio"
+    android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_gravity="center"
         android:orientation="vertical"
         android:padding="10sp"
         android:weightSum="2">
 
+
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginBottom="70dp"
+            android:src="@drawable/tezzet_logo" />
+
         <Button
             android:id="@+id/btn_new_wallet"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="0sp"
             android:layout_margin="5sp"
             android:layout_weight="1"
-            android:text="Create new wallet"/>
+            android:background="@color/golden_tezosrio"
+            android:elevation="10dp"
+            android:fontFamily="sans-serif-light"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="18dp"
+            android:text="Create wallet"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/btn_import_wallet"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="0sp"
-            android:layout_margin="5sp"
+            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:text="Import wallet"/>
-
+            android:backgroundTint=""
+            android:background="@color/golden_tezosrio"
+            android:elevation="10dp"
+            android:fontFamily="sans-serif-light"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="18dp"
+            android:text="Import wallet"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

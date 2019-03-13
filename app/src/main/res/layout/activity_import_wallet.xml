@@ -2,6 +2,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
+            android:background="@color/ligth_grey_tezosrio"
             android:padding="20sp">
 
     <LinearLayout
@@ -17,6 +18,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:src="@drawable/tezzet_logo"
+                android:layout_marginBottom="20dp"/>
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -29,7 +37,7 @@
         <LinearLayout
             android:id="@+id/linearLayout_wallet_data"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="180dp"
             android:orientation="vertical">
 
             <TextView
@@ -40,27 +48,31 @@
             <EditText
                 android:id="@+id/editText_passphrase"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/type_the_passphrase"
+                android:layout_height="54dp"
                 android:layout_marginBottom="20sp"
+                android:background="@drawable/edittext_shadow"
+                android:drawableBottom="5sp"
+                android:hint="@string/type_the_passphrase"
                 android:paddingTop="10sp"
-                android:text=""/>
+                android:text="" />
 
             <TextView
-                android:labelFor="@+id/editText_mnemonic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/mnemonic_words"/>
+                android:layout_marginBottom="5sp"
+                android:labelFor="@+id/editText_mnemonic"
+                android:text="@string/mnemonic_words" />
 
             <EditText
                 android:id="@+id/editText_mnemonic"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="54dp"
+                android:background="@drawable/edittext_shadow"
                 android:enabled="true"
                 android:inputType="textMultiLine|textCapWords"
-                android:paddingBottom="10sp"
                 android:paddingTop="10sp"
-                android:text=""/>
+                android:paddingBottom="10sp"
+                android:text="" />
 
 
         </LinearLayout>
@@ -73,10 +85,13 @@
 
             <Button
                 android:id="@+id/btn_import_wallet"
-                android:layout_width="wrap_content"
+                android:layout_width="132dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:text="@string/import_wallet" />
+                android:background="@color/golden_tezosrio"
+                android:text="@string/import_wallet"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
