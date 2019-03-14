@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/transparent"
-    android:orientation="vertical"
-    android:padding="20sp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:orientation="vertical"
+            android:padding="20sp">
 
 
     <LinearLayout
@@ -31,7 +31,7 @@
                 android:fontFamily="sans-serif-black"
                 android:text="@string/send_funds"
                 android:textSize="26sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
 
             <TextView
@@ -43,7 +43,7 @@
                 android:fontFamily="sans-serif"
                 android:text="@string/to_address"
                 android:textColor="@color/dark_grey_tezosrio"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,10 +60,13 @@
                     android:elevation="5dp"
                     android:fontFamily="sans-serif-light"
                     android:hint="@string/type_in_destination_address"
-                    android:padding="@dimen/pdText"
+                    android:padding="15sp"
+                    android:paddingTop="5sp"
+                    android:paddingBottom="5sp"
+                    android:singleLine="true"
                     android:text=""
-                    android:textColor="@color/dark_grey_tezosrio"
-                    android:textSize="15sp" />
+                    android:textColor="@color/darkGrey"
+                    android:textSize="15sp"/>
 
                 <ImageButton
                     android:id="@+id/imageButton_scan"
@@ -73,7 +76,7 @@
                     android:background="@color/white"
                     android:contentDescription="@string/qrcode_scan_button"
                     android:padding="5sp"
-                    android:src="@mipmap/ic_barcode" />
+                    android:src="@mipmap/ic_barcode"/>
 
 
             </LinearLayout>
@@ -87,7 +90,7 @@
                 android:fontFamily="sans-serif"
                 android:text="@string/amount"
                 android:textColor="@color/dark_grey_tezosrio"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
 
             <EditText
                 android:id="@+id/editTextAmount"
@@ -98,8 +101,13 @@
                 android:fontFamily="sans-serif-light"
                 android:hint="@string/type_in_amount_to_send"
                 android:inputType="numberDecimal"
-                android:padding="@dimen/pdText"
-                android:textSize="15sp" />
+                android:padding="15sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/darkGrey"
+                android:textSize="15sp"/>
 
 
         </LinearLayout>
@@ -119,11 +127,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/golden_tezosrio"
+                android:background="@drawable/button_selector"
                 android:fontFamily="sans-serif-light"
                 android:text="@string/confirm"
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/btn_cancel"
@@ -131,11 +139,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:background="@color/lite_grey_tezosrio"
+                android:background="@drawable/button_selector"
+                android:backgroundTint="@color/lite_grey_tezosrio"
                 android:fontFamily="sans-serif-light"
                 android:text="@string/cancel"
                 android:textColor="@color/dark_grey_tezosrio"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
         </LinearLayout>
 

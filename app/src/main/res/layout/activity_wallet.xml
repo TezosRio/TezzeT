@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="top"
-    android:background="@color/lite_grey_tezosrio"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:orientation="vertical">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:background="@color/lite_grey_tezosrio"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:layout_width="250sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.20"
-                android:src="@drawable/tezzet_logo" />
+                android:src="@drawable/tezzet_logo"/>
 
             <EditText
                 android:id="@+id/editTextUnlockPhrase"
@@ -49,7 +49,7 @@
                 android:padding="15sp"
                 android:paddingTop="10sp"
                 android:paddingBottom="10sp"
-                android:textSize="16sp" />
+                android:textSize="16sp"/>
 
             <Button
                 android:id="@+id/btn_unlock"
@@ -64,7 +64,7 @@
                 android:fontFamily="sans-serif-light"
                 android:text="OK"
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
@@ -91,7 +91,7 @@
                 android:layout_alignStart="@+id/linearLayoutMain"
                 android:layout_alignTop="@+id/linearLayoutMain"
                 android:layout_marginBottom="0dp"
-                android:src="@drawable/tezzet_logo" />
+                android:src="@drawable/tezzet_logo"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -109,7 +109,7 @@
                     android:layout_marginBottom="@dimen/mgTitle"
                     android:fontFamily="sans-serif"
                     android:text="Name"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"/>
 
                 <EditText
                     android:id="@+id/editTextAlias"
@@ -122,7 +122,8 @@
                     android:imeActionLabel="@string/done"
                     android:imeOptions="actionDone"
                     android:inputType="text"
-                    android:padding="15sp" />
+                    android:padding="15sp"
+                    android:textColor="@color/darkGrey"/>
 
                 <TextView
                     android:id="@+id/textViewAddressLabel"
@@ -132,7 +133,7 @@
                     android:layout_marginBottom="@dimen/mgTitle"
                     android:fontFamily="sans-serif"
                     android:text="Address"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"/>
 
                 <TextView
                     android:id="@+id/textViewAddress"
@@ -142,7 +143,7 @@
                     android:elevation="5dp"
                     android:padding="15sp"
                     android:text=""
-                    android:textColor="@color/darkGrey" />
+                    android:textColor="@color/darkGrey"/>
 
                 <TextView
                     android:id="@+id/textViewBalanceLabel"
@@ -152,7 +153,7 @@
                     android:layout_marginBottom="@dimen/mgTitle"
                     android:fontFamily="sans-serif"
                     android:text="Balance"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -168,8 +169,9 @@
                         android:gravity="center_horizontal|center_vertical"
                         android:padding="30sp"
                         android:text=""
+                        android:textColor="@color/darkGrey"
                         android:textSize="30sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <ProgressBar
                         android:id="@+id/progressBar"
@@ -177,7 +179,7 @@
                         android:layout_height="125sp"
                         android:padding="150sp"
                         android:progressBackgroundTint="@color/colorPrimaryDark"
-                        android:visibility="invisible" />
+                        android:visibility="invisible"/>
 
                 </RelativeLayout>
 
@@ -202,7 +204,7 @@
                     android:fontFamily="sans-serif-light"
                     android:text="Send"
                     android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <Button
                     android:id="@+id/btn_receive"
@@ -215,7 +217,7 @@
                     android:fontFamily="sans-serif-light"
                     android:text="Receive"
                     android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
             </LinearLayout>
 
