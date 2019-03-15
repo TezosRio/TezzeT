@@ -12,7 +12,7 @@
     <string name="type_in_amount_to_send">Type in amount to send</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
-    <string name="warning_write_down">WARNING: Write down in a piece of paper all information displayed on this page (passphrase and mnemonic words) and store it in a safe place. It will be required in order to access your wallet and move your funds.</string>
+    <string name="warning_write_down">WARNING: Write down in a piece of paper all information shown here (passphrase, mnemonic). Store in a safe place. It will be required to access your wallet and move funds.</string>
     <string name="wallet_passphrase">Wallet passphrase</string>
     <string name="type_a_passphrase">Type a passphrase</string>
     <string name="create_new_wallet">Create new wallet</string>

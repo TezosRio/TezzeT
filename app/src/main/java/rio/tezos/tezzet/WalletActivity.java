@@ -269,6 +269,7 @@ public class WalletActivity extends AppCompatActivity
 
                     // Opens send activity.
                     Intent intent = new Intent(WalletActivity.this, SendActivity.class);
+                    intent.putExtra("balance", myBalance);
                     startActivityForResult(intent, RESPONSE_WALLET_ACTIVITY);
                 }
             });

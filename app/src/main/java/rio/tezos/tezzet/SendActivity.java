@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -27,6 +28,7 @@ public class SendActivity extends AppCompatActivity
 {
     private EditText editTextDestinationAddress = null;
     private EditText editTextAmount = null;
+    private TextView textViewAmountLabel = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,11 +43,25 @@ public class SendActivity extends AppCompatActivity
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         // Gets screen element references.
+        textViewAmountLabel = (TextView) findViewById(R.id.textViewAmountLabel);
         editTextDestinationAddress = (EditText) findViewById(R.id.editTextDestinationAddress);
         editTextAmount = (EditText) findViewById(R.id.editTextAmount);
         Button buttonConfirm = (Button) findViewById(R.id.btn_confirm);
         Button buttonCancel = (Button) findViewById(R.id.btn_cancel);
         ImageButton imageButtonScan = (ImageButton) findViewById(R.id.imageButton_scan);
+
+        // Get balance from previous activity.
+        String myBalance = "";
+        Bundle extras = getIntent().getExtras();
+        if (extras != null)
+        {
+            myBalance = extras.getString("balance");
+        }
+
+        // Add available balance to amount label.
+        String amountLabelText = textViewAmountLabel.getText().toString();
+        amountLabelText = amountLabelText + " (avail: " + myBalance + ")";
+        textViewAmountLabel.setText(amountLabelText);
 
         // Add listener.
         buttonConfirm.setOnClickListener(new View.OnClickListener()
