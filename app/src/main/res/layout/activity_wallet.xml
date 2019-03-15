@@ -45,6 +45,7 @@
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-light"
                 android:hint="Unlock with your passphrase"
+                android:imeOptions="actionGo"
                 android:inputType="textPassword"
                 android:padding="15sp"
                 android:paddingTop="10sp"
@@ -159,29 +160,36 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/textViewBalance"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="125sp"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:background="@drawable/edittext_shadow"
-                        android:elevation="5dp"
-                        android:gravity="center_horizontal|center_vertical"
-                        android:padding="30sp"
-                        android:text=""
-                        android:textColor="@color/darkGrey"
-                        android:textSize="30sp"
-                        android:textStyle="bold"/>
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textViewBalance"
+                            android:layout_width="match_parent"
+                            android:layout_height="125sp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/edittext_shadow"
+                            android:elevation="5dp"
+                            android:gravity="center"
+                            android:padding="30sp"
+                            android:text=""
+                            android:textColor="@color/darkGrey"
+                            android:textSize="30sp"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
 
                     <ProgressBar
                         android:id="@+id/progressBar"
-                        android:layout_width="match_parent"
-                        android:layout_height="125sp"
-                        android:padding="150sp"
-                        android:progressBackgroundTint="@color/colorPrimaryDark"
-                        android:visibility="invisible"/>
+                        android:layout_width="110sp"
+                        android:layout_height="110sp"
+                        android:layout_centerInParent="true"
+                        android:foregroundTint="@color/golden_tezosrio"
+                        android:indeterminate="true"
+                        android:visibility="gone"/>
 
                 </RelativeLayout>
+
 
             </LinearLayout>
 
@@ -189,7 +197,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20sp"
+                android:layout_marginTop="35sp"
                 android:gravity="center|center_vertical"
                 android:orientation="horizontal"
                 android:weightSum="2">

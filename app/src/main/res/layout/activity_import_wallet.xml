@@ -81,9 +81,9 @@
                 android:enabled="true"
                 android:fontFamily="sans-serif-light"
                 android:gravity="start"
-                android:imeOptions="actionNext"
+                android:imeOptions="actionDone"
                 android:inputType="textMultiLine|textCapWords"
-                android:padding="10sp"
+                android:padding="15sp"
                 android:textColor="@color/darkGrey"
                 android:textSize="15sp"/>
 

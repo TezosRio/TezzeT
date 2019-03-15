@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -30,6 +32,9 @@ public class ImportWalletActivity extends AppCompatActivity
         editTextPassphrase = (EditText) findViewById(R.id.editText_passphrase);
         editTextMnemonics = (EditText) findViewById(R.id.editText_mnemonic);
         Button btnImport = (Button) findViewById(R.id.btn_import_wallet);
+
+        editTextMnemonics.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        editTextMnemonics.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
         // Ads listeners.
         btnImport.setOnClickListener(new View.OnClickListener()

@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +40,9 @@ public class NewWalletActivity extends AppCompatActivity
         editTextMnemonics = (EditText) findViewById(R.id.editText_mnemonic);
         editTextPassphrase = (EditText) findViewById(R.id.editText_passphrase);
 
+        editTextPassphrase.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        editTextPassphrase.setRawInputType(InputType.TYPE_CLASS_TEXT);
+
         // Keeps keyboard hidden when needed.
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
@@ -64,7 +69,7 @@ public class NewWalletActivity extends AppCompatActivity
                     else
                     {
                         Toast toast = Toast.makeText(ctx, "Passphrase is required", Toast.LENGTH_SHORT);
-                        toast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, 0);
+                        toast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, 200);
                         toast.show();
                     }
 

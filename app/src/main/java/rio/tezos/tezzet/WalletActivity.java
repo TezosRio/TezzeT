@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -32,6 +34,7 @@ import milfont.com.tezosj_android.helper.SharedPreferencesHelper;
 import milfont.com.tezosj_android.model.TezosWallet;
 
 import static android.view.View.GONE;
+import static java.lang.Thread.sleep;
 import static milfont.com.tezosj_android.helper.Constants.TEZOS_SYMBOL;
 import static milfont.com.tezosj_android.helper.Constants.TZJ_KEY_ALIAS;
 
@@ -53,6 +56,7 @@ public class WalletActivity extends AppCompatActivity
     private Boolean locked = true;
     private LinearLayout linearLayoutMain = null;
     private LinearLayout linearLayoutLock = null;
+    private Boolean notSendingFunds = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -76,22 +80,8 @@ public class WalletActivity extends AppCompatActivity
         buttonReceive = (Button) findViewById(R.id.btn_receive);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(GONE);
-        progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark), android.graphics.PorterDuff.Mode.MULTIPLY);
+        progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.golden_tezosrio), android.graphics.PorterDuff.Mode.MULTIPLY);
         Button buttonUnlock = (Button) findViewById(R.id.btn_unlock);
-
-        // Verify is wallet is locked. And if it is, asks for passphrase.
-        if (locked)
-        {
-            linearLayoutMain.setVisibility(GONE);
-            linearLayoutLock.setVisibility(View.VISIBLE);
-        }
-        else
-        {
-            linearLayoutMain.setVisibility(View.VISIBLE);
-            linearLayoutLock.setVisibility(GONE);
-            locked = true;
-        }
-
 
         // Adds listener on button unlock.
         buttonUnlock.setOnClickListener(new View.OnClickListener()
@@ -128,10 +118,80 @@ public class WalletActivity extends AppCompatActivity
                         linearLayoutLock.setVisibility(View.VISIBLE);
                         linearLayoutMain.setVisibility(GONE);
                     }
+                }
+                else
+                {
+                    //Hide cursor and keyboard.
+                    hideKeyboard();
 
+                    Toast.makeText(getApplicationContext(), "Passphrase is mandatory", Toast.LENGTH_SHORT).show();
+                    locked = true;
+                    linearLayoutLock.setVisibility(View.VISIBLE);
+                    linearLayoutMain.setVisibility(GONE);
                 }
             }
         });
+
+
+        // Adds listener to passphrase field.
+        editTextUnlockPhrase.setOnEditorActionListener(new EditText.OnEditorActionListener()
+        {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
+            {
+                if (actionId == EditorInfo.IME_ACTION_GO)
+                {
+
+                    if (editTextUnlockPhrase.getText().toString().length() > 0)
+                    {
+
+                        // Brings encrypted wallet to memory.
+                        loadEncryptedWallet();
+
+                        // Verifies is the passphrase is right.
+                        if (myWallet.checkPhrase(editTextUnlockPhrase.getText().toString()))
+                        {
+                            //Hide cursor and keyboard.
+                            hideKeyboard();
+
+                            editTextUnlockPhrase.setText("");
+                            locked = false;
+                            linearLayoutMain.setVisibility(View.VISIBLE);
+                            linearLayoutLock.setVisibility(GONE);
+
+                        }
+                        else
+                        {
+                            //Hide cursor and keyboard.
+                            hideKeyboard();
+
+                            Toast.makeText(getApplicationContext(), "Wrong passphrase", Toast.LENGTH_SHORT).show();
+                            locked = true;
+                            linearLayoutLock.setVisibility(View.VISIBLE);
+                            linearLayoutMain.setVisibility(GONE);
+                        }
+
+                    }
+
+                    return true;
+                }
+                return false;
+            }
+        });
+
+
+        // Verify is wallet is locked. And if it is, asks for passphrase.
+        if (locked)
+        {
+            linearLayoutMain.setVisibility(GONE);
+            linearLayoutLock.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            linearLayoutMain.setVisibility(View.VISIBLE);
+            linearLayoutLock.setVisibility(GONE);
+            locked = true;
+        }
 
 
     }
@@ -205,6 +265,8 @@ public class WalletActivity extends AppCompatActivity
                 @Override
                 public void onClick(View v)
                 {
+                    notSendingFunds = false;
+
                     // Opens send activity.
                     Intent intent = new Intent(WalletActivity.this, SendActivity.class);
                     startActivityForResult(intent, RESPONSE_WALLET_ACTIVITY);
@@ -331,7 +393,7 @@ public class WalletActivity extends AppCompatActivity
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         // Unlocks wallet.
-        this.locked = false;
+        WalletActivity.this.locked = false;
 
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode)
@@ -388,7 +450,7 @@ public class WalletActivity extends AppCompatActivity
 
                                                     try
                                                     {
-                                                        BigDecimal myFee = new BigDecimal("0.05");
+                                                        BigDecimal myFee = new BigDecimal("0.01");
                                                         operationResult = myWallet.send(myWallet.getPublicKeyHash(), dest_address, bdAmount, myFee, null, null);
                                                     }
                                                     catch (Exception e)
@@ -421,6 +483,7 @@ public class WalletActivity extends AppCompatActivity
                                                             else
                                                             {
                                                                 status = "Operation successful. Please wait until blockchain confirmation";
+                                                                checkForBalanceUpdates();
                                                             }
 
                                                             Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG).show();
@@ -472,6 +535,32 @@ public class WalletActivity extends AppCompatActivity
 
     }
 
+    private void checkForBalanceUpdates()
+    {
+        // Will wait 5 minutes for a balance update, checking at each 30 seconds.
+        new CountDownTimer(300000, 30000)
+        {
+            public void onTick(long millisUntilFinished)
+            {
+                try
+                {
+                    getWalletBalance();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+            public void onFinish()
+            {
+            }
+
+        }.start();
+
+    }
+
+
     @Override
     protected void onRestart()
     {
@@ -495,6 +584,14 @@ public class WalletActivity extends AppCompatActivity
     protected void onPause()
     {
         super.onPause();
-        this.locked = true;
+
+        if (notSendingFunds)
+        {
+            this.locked = true;
+        }
+        else
+        {
+            notSendingFunds = true;
+        }
     }
 }
