@@ -451,8 +451,13 @@ public class WalletActivity extends AppCompatActivity
 
                                                     try
                                                     {
-                                                        BigDecimal myFee = new BigDecimal("0.01");
-                                                        operationResult = myWallet.send(myWallet.getPublicKeyHash(), dest_address, bdAmount, myFee, null, null);
+                                                        // Build the parameter.
+                                                        JSONObject parameters = new JSONObject();
+                                                        parameters.put("prim", "Unit");
+
+                                                        // Define the fee.
+                                                        BigDecimal myFee = new BigDecimal("0.001420");
+                                                        operationResult = myWallet.send(myWallet.getPublicKeyHash(), dest_address, bdAmount, myFee, null, null, parameters);
                                                     }
                                                     catch (Exception e)
                                                     {
