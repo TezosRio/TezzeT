@@ -2,7 +2,7 @@
 
 **TEZZET** is a fast, lightweight, secure and efficient Android Mobile Tezos Wallet.
 
-It is written in Java language, and uses our TezosJ_SDK library. This repository contains the wallet source code. You are free to clone, study how it was done and fork this project at will.
+It is written in Java language, and uses our TezosJ_SDK library. This repository contains the wallet source code that you may import as a project in Android Studio. You are free to clone, study how it was done and fork this project at will.
 
 ## TEZZET Installation
 
