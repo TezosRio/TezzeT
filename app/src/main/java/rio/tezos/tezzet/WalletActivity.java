@@ -451,13 +451,9 @@ public class WalletActivity extends AppCompatActivity
 
                                                     try
                                                     {
-                                                        // Build the parameter.
-                                                        JSONObject parameters = new JSONObject();
-                                                        parameters.put("prim", "Unit");
-
                                                         // Define the fee.
-                                                        BigDecimal myFee = new BigDecimal("0.001420");
-                                                        operationResult = myWallet.send(myWallet.getPublicKeyHash(), dest_address, bdAmount, myFee, null, null, parameters);
+                                                        BigDecimal myFee = new BigDecimal("0.00294");
+                                                        operationResult = myWallet.send(myWallet.getPublicKeyHash(), dest_address, bdAmount, myFee, null, null, null);
                                                     }
                                                     catch (Exception e)
                                                     {
@@ -474,10 +470,11 @@ public class WalletActivity extends AppCompatActivity
                                                     try
                                                     {
                                                         progressBar.setVisibility(GONE);
+                                                        String status ="";
 
                                                         if (result == true)
                                                         {
-                                                            String status = (String) operationResult.get("result");
+                                                            status = (String) operationResult.get("result");
 
                                                             // Verifies if there is any error indicator on the result. Otherwise, builts a success message.
                                                             // Note that TezosJ_SDK will append "error" word to the result JSON if anything was wrong.
@@ -489,11 +486,17 @@ public class WalletActivity extends AppCompatActivity
                                                             else
                                                             {
                                                                 status = "Operation successful. Please wait until blockchain confirmation";
-                                                                checkForBalanceUpdates();
                                                             }
 
-                                                            Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG).show();
                                                         }
+                                                        else
+                                                        {
+                                                            status = "Sorry, funds could not be sent. There were errors. Operation was cancelled";
+                                                        }
+
+                                                        Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG).show();
+                                                        checkForBalanceUpdates();
+
                                                     }
                                                     catch (Exception e)
                                                     {
